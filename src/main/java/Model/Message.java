@@ -12,6 +12,10 @@ public class Message {
     }
 
     public void setMessageStroka(String newStroka) {
-        this.messageStroka = newStroka;
+        this.messageStroka = newStroka+" (ред.)"; //учесть что несколько раз можно редачить
+    }
+
+    public void deleteMessageStroka() {
+        this.messageStroka = "Сообщение удалено";
     }
 }
