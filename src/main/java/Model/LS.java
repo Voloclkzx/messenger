@@ -10,4 +10,9 @@ public class LS {
         this.user1 = user1;
         this.user2 = user2;
     }
+
+    public void addNewMessage(Message[] messagesLS) {
+        this.messagesLS = messagesLS;
+    }
+
 }

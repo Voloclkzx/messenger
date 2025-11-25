@@ -2,12 +2,14 @@ package Model;
 
 public class User {
     private String userName;
-    private String[] contactList;
-    private String[] groupList;
-    private String[] channelList;
+    private String password;
+    private Boolean[] isAdmin;
 
-    public User(String userName) {
+
+    public User(String userName,String password, Boolean[] isAdmin) {
         this.userName = userName;
+        this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public String getUserName() {
@@ -18,28 +20,5 @@ public class User {
         this.userName = userName;
     }
 
-    public String[] getContactList() {
-        return contactList;
-    }
 
-    public void setContactList(String[] contactList) {
-        this.contactList = contactList;
-    }
-
-    public String[] getGroupList() {
-        return groupList;
-    }
-
-    public void setGroupList(String[] groupList) {
-        this.groupList = groupList;
-    }
-
-
-    public String[] getChannelList() {
-        return channelList;
-    }
-
-    public void setChannelList(String[] channelList) {
-        this.channelList = channelList;
-    }
 }
