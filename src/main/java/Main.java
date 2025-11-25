@@ -44,7 +44,7 @@ public class Main {
                 } else if (category.equals("Группа")) {
                     f2(user);
                 } else if (category.equals("Канал")) {
-                    f2(user);
+                    f3(user);
                 } else {
                     System.out.println("Неверно введена категория, попробуйте снова");
                     flag1 = true;
@@ -81,8 +81,6 @@ public class Main {
 
                 }
 
-            } else {
-                System.out.println("222");
             }
         }
 
@@ -122,6 +120,56 @@ public class Main {
             }
         }
     }
+    public static void f3(User user) {
+        System.out.println("Выберите, какой канал вы хотите посмотреть. Доступные каналы:");
+        for (Channel x: channels) {
+            for (User y : x.getUserList()) {
+                if ((y.getUserName().equals(user.getUserName()))) {
+                    System.out.println(x.getChannelName());
+                }
 
+            }
+        }
+
+        String channelName = scan.nextLine();
+        for (Channel x : channels) {
+            if (x.getChannelName().equals(channelName)) {
+                for(int i = 0; i < (x.getCountm()); i++) {
+                    System.out.println(user.getUserName() + ": " + x.messages[i]);
+                }
+                boolean isAdmin = false;
+                if (x.getChannelId() == user.getAdminChannelId()) {
+                    isAdmin = true;
+                }
+                if (isAdmin) {
+                    System.out.println("Добро пожаловать, администратор!");
+                    boolean flag3 = true;
+                    while(flag3) {
+                        System.out.println("Напишите новый пост в канал или напишите \"Выход\", чтобы выйти");
+                        String soob = scan.nextLine();
+                        if (soob.equals("Выход")) {
+                            flag3 = false;
+                            startMenu(user);
+                        } else {
+                            LocalTime time = LocalTime.now();
+                            x.addNewMessage(new Message(user.getUserName()+": "+soob, time));
+                            for(int i = 0; i < (x.getCountm()); i++) {
+                                System.out.println(x.messages[i]);
+                            }
+                        }
+
+                    }
+                } else {
+                    for(int i = 0; i < (x.getCountm()); i++) {
+                        System.out.println(x.messages[i]);
+                    }
+                    startMenu(user);
+
+                }
+
+
+            }
+        }
+    }
 
 }

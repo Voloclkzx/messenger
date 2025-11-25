@@ -6,14 +6,19 @@ public class Group {
     private String groupName;
     public Message[] messages;
     private int countm = 1;
+    private int groupId;
 
     LocalTime time = LocalTime.now();
+    private static int groupIdCount = 1;
+
 
     public Group(User[] members, String groupName) {
         this.members = members;
         this.groupName = groupName;
         this.messages = new Message[1000];
         messages[0] = new Message("Добро пожаловать в группу " + groupName, time);
+        this.groupId = groupIdCount;
+        groupIdCount++;
     }
 
 
