@@ -1,17 +1,19 @@
 package Model;
+import java.time.LocalTime;
 
 public class Channel {
     private String channelName;
     private User[] userList;
-    private User admin;
     private Message[] messages;
 
-    public Channel(String channelName) {
+    LocalTime time = LocalTime.now();
+
+    public Channel(User[] userList,String channelName) {
         this.channelName = channelName;
-    }
-    public Channel(String channelName, User admin) {
-        this.channelName = channelName;
-        this.admin = admin;
+        this.userList = userList;
+        this.messages = new Message[1000];
+        messages[0] = new Message("Добро пожаловать в канал " + channelName, time);
+
     }
 
     public String getChannelName() {
@@ -28,14 +30,6 @@ public class Channel {
 
     public void setUserList(User[] userList) {
         this.userList = userList;
-    }
-
-    public User getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(User admin) {
-        this.admin = admin;
     }
 
     public Message[] getMessages() {

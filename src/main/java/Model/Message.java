@@ -1,14 +1,13 @@
 package Model;
+import java.time.LocalTime;
 
 public class Message {
     private String messageStroka;
-    private String date;
-    private boolean media;
+    private LocalTime date;
 
-    public Message(String messageStroka,String date,boolean media) {
+    public Message(String messageStroka,LocalTime date) {
         this.messageStroka = messageStroka;
         this.date = date;
-        this.media = media;
     }
 
     public void setMessageStroka(String newStroka) {
@@ -17,5 +16,9 @@ public class Message {
 
     public void deleteMessageStroka() {
         this.messageStroka = "Сообщение удалено";
+    }
+
+    public String toString(){
+        return messageStroka+" ("+date+")";
     }
 }
