@@ -134,9 +134,6 @@ public class Main {
         String channelName = scan.nextLine();
         for (Channel x : channels) {
             if (x.getChannelName().equals(channelName)) {
-                for(int i = 0; i < (x.getCountm()); i++) {
-                    System.out.println(user.getUserName() + ": " + x.messages[i]);
-                }
                 boolean isAdmin = false;
                 if (x.getChannelId() == user.getAdminChannelId()) {
                     isAdmin = true;
@@ -153,7 +150,7 @@ public class Main {
                         } else {
                             LocalTime time = LocalTime.now();
                             x.addNewMessage(new Message(user.getUserName()+": "+soob, time));
-                            for(int i = 0; i < (x.getCountm()); i++) {
+                            for(int i = 1; i < (x.getCountm()); i++) {
                                 System.out.println(x.messages[i]);
                             }
                         }
